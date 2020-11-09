@@ -1,0 +1,6 @@
+node_modules/
+build/
+src/serviceWorker.js
+*.test.js
+*/setupTests.js
+config-overrides.js

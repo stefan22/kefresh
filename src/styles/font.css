@@ -1,0 +1,41 @@
+/**
+  OpenType variable font. It allows to store multiple variations of a type family
+  into a single one reducing font file sizes
+*/
+
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url('https://pixelambacht.nl/remote/RobotoFlex[slnt,wdth,wght,opsz].woff2')
+      format('woff2 supports variations'),
+    url('https://pixelambacht.nl/remote/RobotoFlex[slnt,wdth,wght,opsz].woff2')
+      format('woff2-variations');
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+}
+
+.keroboto,
+.keroboto2,
+.keroboto3 {
+  all: unset;
+  display: block;
+  text-align: center;
+  font-family: 'Roboto Flex', monospace;
+  transition: font-weight 0.5s ease-in-out 350ms;
+}
+.keroboto:hover,
+.keroboto2:hover {
+  font-weight: 400;
+}
+
+.keroboto {
+  font-weight: 320;
+}
+
+.keroboto2 {
+  font-weight: 400;
+  animation: width-animation 1s 0ms;
+}
+
+.keroboto3 {
+  font-weight: 420;
+}

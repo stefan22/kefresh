@@ -1,0 +1,207 @@
+@import './font.css';
+
+/*
+ Base css contains the CSS Global variables that make up the theme,
+ flexbox properties for the css layout & desktop css props
+*/
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto Flex', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* theme global variables */
+:root {
+  --main-bgcolor: #fff; /* application background color*/
+  --colbg-color: rgb(
+    177,
+    232,
+    250
+  ); /* a column background*/
+  --kefresh-bgcolor: rgb(
+    92,
+    186,
+    202
+  ); /* a column background */
+  --heading-color: rgb(51, 154, 250); /* heading color */
+  --container-size: 1350px; /* container width */
+  --fontcolor: rgba(0, 0, 0, 0.87); /* regular font color */
+  --font-size: 1rem; /* base font size */
+  --buttonb-bgcolor: red; /* button color */
+  --borderbottom-color: rgb(211, 211, 211);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 3rem 0;
+  width: 100%;
+  justify-content: space-around;
+  background-color: var(--main-bgcolor);
+  line-height: var(--line-height);
+  font-size: var(--font-size);
+  color: var(--fontcolor);
+}
+
+/* openType font */
+.keroboto,
+.keroboto2,
+.keroboto3 {
+  font-family: 'Roboto Flex', monospace;
+}
+
+.keroboto2 {
+  color: var(--heading-color);
+}
+
+.keroboto {
+  color: var(--fontcolor);
+}
+
+/* css column,row,container layout */
+
+.wrapper {
+  width: 80%;
+  max-width: var(--container-size);
+  margin: 0 auto;
+  overflow: scroll;
+  background-color: var(--main-bgcolor);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.inner-column {
+  height: fit-content;
+  min-height: 70vh;
+  cursor: pointer;
+}
+
+.kefresh-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 55vh;
+  flex-basis: 100%;
+}
+
+.kecheckout-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 55vh;
+  flex-basis: 100%;
+}
+
+.kefresh-column .inner-column {
+  background-color: var(--kefresh-bgcolor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  border: 1px solid white;
+  font-size: calc(var(--font-size) * 1.15);
+}
+
+.column .inner-column {
+  background-color: var(--colbg-color);
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  font-size: calc(var(--font-size) * 1.15);
+}
+
+/*
+  Over 800px css properties
+*/
+
+@media screen and (min-width: 800px) {
+  .app {
+    min-height: calc(100vh - 150px);
+    margin: 0;
+    opacity: 1;
+    overflow: scroll;
+  }
+
+  .column {
+    flex: 1;
+  }
+
+  .app h1 {
+    font-size: calc(var(--font-size) * 2.5);
+  }
+
+  .kefresh-column .inner-column,
+  .column .inner-column,
+  .product-checkout-total,
+  .product-checkout ul {
+    transition: font-weight 0.5s ease-in-out 350ms;
+    font-size: calc(var(--font-size) * 1.25);
+  }
+
+  .kefresh-column {
+    flex: 2;
+  }
+
+  .app .kefresh-column h2 {
+    text-align: left;
+  }
+
+  .kecheckout-column {
+    flex: 1;
+  }
+
+  .product-checkout-total {
+    width: 60% !important;
+  }
+
+  .product-checkout ul {
+    width: 60% !important;
+  }
+
+  .app .keloading {
+    height: 50vh;
+  }
+
+  .app .keloading img {
+    max-width: 150px;
+  }
+
+  .app .kecheckout-column.keroboto {
+    background-position-x: 100px;
+    background-position-y: 30%;
+  }
+  .app .kecheckout-column.keroboto::before {
+    width: 120%;
+    line-height: 50%;
+    vertical-align: middle;
+    font-size: calc(var(--font-size) * 2);
+  }
+}
+
+/* helper class*/
+
+.mb-3 {
+  margin-bottom: 3rem !important;
+}
