@@ -18,56 +18,47 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // can be removed at anytime
-    this.timeout = setTimeout(() => {
-      return this.setState({
-        loading: data ? false : true,
-      });
-    }, 850);
+    return this.setState({
+      loading: data ? false : true,
+    });
   }
 
   handleItemUpdate = (obj) => {
     let objArr = [];
     // existing items
     objArr = this.state.keitems.filter((itm) => itm.itemCode !== obj.itemCode);
-    obj.qty = obj.qty + 1;
+
     return this.setState({
-      keitems: objArr.concat(obj),
+      keitems: [
+        ...objArr,
+        {...obj, qty: obj.qty + 1}
+      ],
       total: ((this.state.total * 100 + obj.price * 100) / 100).toFixed(2),
     });
   };
 
-  handleKeTotal = (total, cv) => {
-    total = this.state.total;
-    return total + cv.price;
-  };
 
   handleKeitems = (e, obj) => {
     e.preventDefault();
-    let newObj = Object.assign({},
-      obj);
-    let id = newObj.itemCode;
-    let exist = undefined;
 
-    exist = this.state.keitems.find((itm) => itm.itemCode === id);
+    let exist = undefined;
+    exist = this.state.keitems.find(itm => itm.itemCode === obj.itemCode);
+
     if (exist) {
       // update if it exists
       return this.handleItemUpdate(exist);
     }
-    newObj.qty = 1;
+
+    const newObj = Object.assign({qty: 1},obj);
     return this.setState({
       keitems: [...this.state.keitems, newObj],
       total: ((this.state.total * 100 + newObj.price * 100) / 100).toFixed(2),
     });
   };
 
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
-  }
 
   render() {
     const { loading, keitems, total } = this.state;
-
     return (
       <div className={ `${loading ? 'app is-loading' : 'app'}` }>
         <h1 className="keroboto2">Kelisto</h1>

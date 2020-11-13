@@ -39,8 +39,8 @@
     "react/jsx-curly-spacing": [2, "always"],
     "react/no-unknown-property": [2, {"ignore":["1"]}],
     "react/jsx-indent": [2, 2, {"checkAttributes": true}],
-    "functional/immutable-data": "error"
-    // "no-console": ["error",{ "allow":["warn"]}]
+    "functional/immutable-data": "error",
+    "no-console": ["error",{ "allow":["warn"]}]
 
 
 
